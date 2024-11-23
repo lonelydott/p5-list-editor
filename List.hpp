@@ -91,7 +91,14 @@ public:
 
   //MODIFIES: may invalidate list iterators
   //EFFECTS:  removes all items from the list
-  void clear();
+  void clear(){
+    Node *n = front();
+    while(n != nullptr){
+      Node *temp = n;
+      n = n->next;
+      delete temp;
+    }
+  }
 
   // You should add in a default constructor, destructor, copy constructor,
   // and overloaded assignment operator, if appropriate. If these operations
@@ -123,7 +130,7 @@ public:
     // Add a default constructor here. The default constructor must set both
     // pointer members to null pointers.
 
-
+    List(): first(nullptr), last(nullptr), size(0);
 
     // Add custom implementations of the destructor, copy constructor, and
     // overloaded assignment operator, if appropriate. If these operations
